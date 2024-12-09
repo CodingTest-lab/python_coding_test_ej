@@ -67,3 +67,26 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+## 참고
+- range() : 숫자 시퀀스 생성(순서대로)
+  ```
+  # 1. range(stop)
+  # 0부터 stop-1까지의 숫자 생성
+    for i in range(5):
+            print(i)  # 0, 1, 2, 3, 4 출력
+  
+  # 2. range(start, stop)
+  # start부터 stop-1까지의 숫자 생성
+    for i in range(1, 6):
+            print(i)  # 1, 2, 3, 4, 5 출력
+  
+  # 3. range(start, stop, step)
+  # start부터 stop-1까지 step만큼 건너뛰며 생성
+    for i in range(0, 10, 2):
+            print(i)  # 0, 2, 4, 6, 8 출력
+  # 감소하는 순서
+    for i in range(10, 0, -1):
+            print(i)  # 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 출력
+  ```
