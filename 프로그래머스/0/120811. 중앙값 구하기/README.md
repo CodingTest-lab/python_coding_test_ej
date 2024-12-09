@@ -69,3 +69,38 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+## 참고
+#### sort()
+- 리스트의 메서드
+- 원본 리스트를 제자리에서 정렬
+- None을 반환
+- 원본 리스트를 직접 수정
+  ```
+  numbers = [3, 1, 4, 1, 5, 9, 2]
+  result = numbers.sort()  # result는 None
+  print(result)  # None
+  print(numbers)  # [1, 1, 2, 3, 4, 5, 9]
+  ```
+#### sorted()
+- 내장 함수
+- 원본 데이터는 그대로 유지
+- 새로운 정렬된 리스트를 반환
+- 모든 반복 가능한 객체(리스트, 튜플, 문자열 등)에 사용 가능
+  ```
+  numbers = [3, 1, 4, 1, 5, 9, 2]
+  result = sorted(numbers)  # result는 새로운 정렬된 리스트
+  print(result)  # [1, 1, 2, 3, 4, 5, 9]
+  print(numbers)  # [3, 1, 4, 1, 5, 9, 2] (원본 유지)
+  # 추가 옵션: 역순 정렬
+  print(sorted(numbers, reverse=True))  # [9, 5, 4, 3, 2, 1, 1]
+  ```
+##### 주요 차이점
+
+sort(): 리스트 메서드, 원본 수정, None 반환 /
+sorted(): 내장 함수, 새 리스트 반환, 원본 유지
+
+일반적으로 <br>
+리스트를 직접 정렬하고 싶다면 sort() /
+원본은 그대로 두고 새 정렬된 리스트가 필요하다면 sorted()
