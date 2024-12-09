@@ -4,3 +4,5 @@ def solution(n):
         if i % 2 != 0:
             answer.append(i)
     return answer
+
+# return [i for i in range(1, n+1, 2)]
