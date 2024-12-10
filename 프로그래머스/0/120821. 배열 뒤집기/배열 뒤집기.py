@@ -7,4 +7,6 @@ def solution(num_list):
 #     answer.append(num_list[i])
 # return answer
 
+# return num_list[::-1]
+
 # 
