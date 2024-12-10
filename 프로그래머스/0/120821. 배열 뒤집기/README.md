@@ -78,3 +78,34 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+### 참고
+- 배열 뒤집기
+  1. reverse() 메서드 - 리스트를 직접 변경하며, 반환 값 없음
+     ```
+     arr = [1, 2, 3, 4, 5]
+     arr.reverse()
+     print(arr)  # 출력: [5, 4, 3, 2, 1]
+     ```
+  2. 슬라이싱 - [start:end:step], ::(시작과 끝을 모두 생략하여 전체를 의미), -1(슬라이스의 단계(step)를 지정, -1은 역방향으로 한 요소씩 이동하라는 의미)
+     ```
+     arr = [1, 2, 3, 4, 5]
+     reversed_arr = arr[::-1]
+     print(reversed_arr)  # 출력: [5, 4, 3, 2, 1]
+     ```
+  3. reversed() 함수 - 원본 iterable(튜플, 리스트 등)을 변경하지 않고, 뒤집힌 이터레이터를 반환, 이터레이터를 리스트로 변환하려면 추가적인 작업이 필요
+     ```
+     arr = [1, 2, 3, 4, 5]
+     reversed_arr = list(reversed(arr))
+     print(reversed_arr)  # 출력: [5, 4, 3, 2, 1]
+     print(arr)  # 출력: [1, 2, 3, 4, 5] (원본 리스트는 변경되지 않음)
+     ```
+  4. for 루프 
+     ```
+     arr = [1, 2, 3, 4, 5]
+     reversed_arr = []
+     for i in range(len(arr) - 1, -1, -1):
+            reversed_arr.append(arr[i])
+     print(reversed_arr)  # 출력: [5, 4, 3, 2, 1]
+     ```
