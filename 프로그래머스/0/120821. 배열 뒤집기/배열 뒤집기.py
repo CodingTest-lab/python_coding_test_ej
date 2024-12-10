@@ -9,4 +9,4 @@ def solution(num_list):
 
 # return num_list[::-1]
 
-# 
+# return list(reversed(num_list))
