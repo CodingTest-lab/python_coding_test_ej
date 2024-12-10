@@ -72,3 +72,7 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+### 참고
+- count() : 리스트(list) 객체에서 사용할 수 있는 메서드로, 특정 요소가 리스트에 몇 번 나타나는지를 세는 기능을 제공, 없으면 '0' 반환
