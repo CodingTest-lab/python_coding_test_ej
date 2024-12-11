@@ -67,3 +67,20 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+### 참고
+- 문자열 뒤집기 : reverse() 메서드는 리스트에서만 사용 가능(문자열을 리스트로 변환 후 사용 가능)
+  ```
+  # 슬라이싱 : 배열 뒤집기에서도 사용
+  original_string = "Hello, World!"
+  reversed_string = original_string[::-1]
+  print(reversed_string)  # 출력: !dlroW ,olleH
+
+  # reversed() : reversed()을 사용해 문자열을 역순으로 배열하고 join()으로 결합
+  original_string = "Hello, World!"
+  reversed_string = ''.join(reversed(original_string))
+  print(reversed_string)  # 출력: !dlroW ,olleH
+
+
+  ```
