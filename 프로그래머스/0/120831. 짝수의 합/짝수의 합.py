@@ -3,3 +3,4 @@ def solution(n):
     for i in range(0, n+1, 2):
         answer += i
     return answer
+# return sum([i for i in range(2, n + 1, 2)])
