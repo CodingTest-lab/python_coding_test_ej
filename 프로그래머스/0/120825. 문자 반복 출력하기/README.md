@@ -61,3 +61,16 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+### 참고
+- join() : 문자열 결합 메서드, 문자열로 구성된 iterable만을 인자로 받을 수 있음
+  ```
+  letters = ['H', 'e', 'l', 'l', 'o']
+  result = ''.join(letters)   # 구분자.join(결합할 문자열)
+  print(result)  # 출력: "Hello"
+
+  fruits = ["apple", "banana", "cherry"]
+  result = ", ".join(fruits)
+  print(result)  # 출력: "apple, banana, cherry"
+  ```
