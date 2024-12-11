@@ -65,3 +65,21 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+### 참고
+- sum() : iterable(예: 리스트, 튜플 등)의 모든 요소를 더하는 데 사용되는 내장 함수, 주로 숫자들의 합계를 계산하는 데 사용, 문자열이나 다른 데이터 타입이 포함된 iterable을 사용하면 TypeError가 발생
+  ```
+  numbers = [1, 2, 3, 4, 5]
+  result = sum(numbers)
+  print(result)  # 출력: 15
+
+  numbers = [1, 2, 3]
+  result = sum(numbers, 10)  # 10을 초기값으로 추가
+  print(result)  # 출력: 16
+  
+  float_numbers = [1.5, 2.5, 3.5]
+  result = sum(float_numbers)
+  print(result)  # 출력: 7.5
+
+  ```
