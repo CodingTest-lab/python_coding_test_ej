@@ -5,3 +5,4 @@ def solution(slice, n):
     else:
         return (n // slice) + 1
     
+# return ((n - 1) // slice) + 1
