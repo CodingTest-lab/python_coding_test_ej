@@ -5,3 +5,6 @@ def solution(s1, s2):
             if i == j:
                 result += 1
     return result
+
+# 교집합 사용
+# return len(set(s1)&set(s2));
