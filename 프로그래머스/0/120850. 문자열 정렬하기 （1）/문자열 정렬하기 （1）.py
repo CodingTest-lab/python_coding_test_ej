@@ -6,3 +6,5 @@ def solution(my_string):
             answer.append(j)
     answer.sort()
     return answer
+
+# return sorted([int(c) for c in my_string if c.isdigit()])
