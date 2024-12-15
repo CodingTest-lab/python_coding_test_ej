@@ -7,3 +7,6 @@ def solution(cipher, code):
             answer += cipher_arr[i]
     
     return answer
+
+# code - 1 부터 시작해서 끝까지 code 간격으로 새 문자열 생성
+# return cipher[code-1::code]
