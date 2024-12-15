@@ -7,4 +7,5 @@ def solution(my_string):
     answer.sort()
     return answer
 
+# isdigit() : 문자열이 온전한 정수인지 판별
 # return sorted([int(c) for c in my_string if c.isdigit()])
