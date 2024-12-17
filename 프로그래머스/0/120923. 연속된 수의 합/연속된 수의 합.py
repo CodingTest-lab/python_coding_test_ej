@@ -1,18 +1,12 @@
 def solution(num, total):
-    # 등차는 1로 고정
-    # 연속된 수의 합 공식 n(n+1)/2을 이용해 중간값 계산
-#     mid = total // num
-    
-#     # 첫번째 숫자
-#     start = mid - (num//2)
-    
-    
-#     # range()는 0부터 num-1까지
-#     return [start + i for i in range(num)]
-
+    # 기본 합계 구하기
     d=0
     for i in range(1, num):
         d += i
+        
+    # 목표 합계에서 기본 합계를 빼서 시작 숫자 계산
     start=(total-d)//num
-    answer = [i for i in range(start, start+num)]
-    return answer
+    
+    # 시작숫자부터 연속된 num개의 숫자 생성
+    return [i for i in range(start, start+num)]
+  
