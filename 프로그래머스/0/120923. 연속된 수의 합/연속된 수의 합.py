@@ -1,5 +1,6 @@
 def solution(num, total):
     # 기본 합계 구하기
+    # 가우스 공식 n(n+1)/2의 변형
     d=0
     for i in range(1, num):
         d += i
