@@ -73,3 +73,41 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+---
+### 참고
+- split() : 문자열을 특정 구분자를 기준으로 나누는 메서드, 결과를 리스트로 나타내기 때문에 인덱스로 각 요소 접근 가능
+  ```
+  # 인자 없이 사용하면 공백(스페이스, 탭, 줄바꿈)을 기준으로 분리
+  text = "hello world python"
+  result = text.split()
+  print(result)  # ['hello', 'world', 'python']
+
+  # 특정 구분자 지정
+  text = "apple,banana,cherry"
+  result = text.split(',')
+  print(result)  # ['apple', 'banana', 'cherry']
+
+  # 복잡한 문자열 분리
+  equation = "19 - 6 = 13"
+  parts = equation.split('=')
+  print(parts)  # ['19 - 6 ', ' 13']
+
+  # 수식 분리
+  left = parts[0].strip()
+  right = parts[1].strip()
+  left_parts = left.split()
+  print(left_parts)  # ['19', '-', '6']
+
+  # 줄바꿈 기준 분리
+  multiline = """first line
+            second line
+            third line"""
+  lines = multiline.split('\n')
+  print(lines)  # ['first line', 'second line', 'third line']
+
+  # 여러 구분자 동시에 사용
+  import re
+  text = "apple:banana;cherry,grape"
+  result = re.split('[,:;]', text)
+  print(result)  # ['apple', 'banana', 'cherry', 'grape']
+  ```
