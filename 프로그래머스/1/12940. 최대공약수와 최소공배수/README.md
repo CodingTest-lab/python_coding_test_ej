@@ -58,3 +58,28 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+---
+### 참고
+- 최대공약수 구하기 <br>
+  유클리드 호제법(Euclidean algorithm)은 두 수의 최대공약수(GCD)를 구하는 효율적인 방법
+  ```
+  GCD(a, b) = GCD(b, a % b)
+
+  # 작동 원리
+  def gcd(a, b):
+    while b:  # b가 0이 될 때까지
+        a, b = b, a % b  # a를 b로, b를 a를 b로 나눈 나머지로 교체
+    return a
+
+  # 예시(18과 12의 최대공약수)
+  step 1: GCD(18, 12)
+    18 = 1 * 12 + 6
+    a = 12, b = 6
+
+   step 2: GCD(12, 6)
+    12 = 2 * 6 + 0
+    a = 6, b = 0  # 여기서 종료, 결과는 6
+
+  # 최소 공배수
+  a * b / gcd(a, b)
+  ```
