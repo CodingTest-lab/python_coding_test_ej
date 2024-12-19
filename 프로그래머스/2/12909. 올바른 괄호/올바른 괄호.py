@@ -19,3 +19,18 @@ def solution(s):
         return False
 
     return True
+
+    # 스택 구조 사용
+    # "("는 무조건 스택에 추가
+    # ")"가 나오면 스택에서 "("를 제거
+    # 스택이 비어있는데 ")"가 나오면 False
+    # 최종적으로 스택이 비어있어야 True
+    # stack = []
+    # for i in s:
+    #     if i == "(":
+    #         stack.append(i)
+    #     else:  # i == ")"
+    #         if not stack:
+    #             return False
+    #         stack.pop()
+    # return len(stack) == 0
