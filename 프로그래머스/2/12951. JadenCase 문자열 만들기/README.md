@@ -92,4 +92,13 @@
    print(bool(space))   # True
 
    print(empty == space)  # False
+
+   //////////////////////////////////////////
+   answer = ['Hello', 'World']
+
+   # 구분자 없이 붙이기
+   print(''.join(answer))    # HelloWorld
+
+   # 공백으로 구분하여 붙이기
+   print(' '.join(answer))   # Hello World
    ```
