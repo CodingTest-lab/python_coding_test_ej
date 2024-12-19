@@ -52,3 +52,30 @@
       </table>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+---
+### 참고
+- map() : 이터러블(반복 가능한 객체)에 함수를 적용하여 새로운 이터레이터를 반환, 단순한 데이터 변환부터 다중 이터러블 처리, 조건 적용, 문자열/수학 연산까지 다양한 작업에 사용 가능
+  ```
+  map(function, iterable, ...)
+  # function: 이터러블의 각 요소에 적용할 함수.
+  # iterable: 함수를 적용할 이터러블(리스트, 튜플 등).
+  # map()은 새로운 map 객체(이터레이터)를 반환
+  # 결과를 사용하려면 list()나 tuple()로 변환
+  ```
+  ```
+  # 숫자 리스트를 문자열로 변환(데이터 변환)
+  numbers = [1, 2, 3, 4, 5]
+  string_numbers = map(str, numbers)
+  print(list(string_numbers))  # ['1', '2', '3', '4', '5']
+
+  # 리스트의 모든 문자열을 대문자로 변환
+  words = ["hello", "world", "python"]
+  upper_words = map(str.upper, words)
+  print(list(upper_words))  # ['HELLO', 'WORLD', 'PYTHON']
+
+  # 두 리스트의 같은 인덱스 요소를 병합(다중 이터러블 처리, 리스트 병합)
+  list1 = ["A", "B", "C"]
+  list2 = ["1", "2", "3"]
+  combined = map(lambda x, y: x + y, list1, list2)
+  print(list(combined))  # ['A1', 'B2', 'C3']
+  ```
