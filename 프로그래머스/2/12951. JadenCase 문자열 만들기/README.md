@@ -59,3 +59,37 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+---
+### 참고
+1. 리스트 컴프리헨션 주의점
+  ```
+    [word[0].upper()+word[1:].lower() if word else "" for word in words]
+  ```
+- 이것은 조건부 표현식(conditional expression)을 리스트 컴프리헨션 내부에서 사용
+- 모든 word에 대해 실행되며, word가 있으면 대문자 변환을, 없으면 빈 문자열 반환
+- 결과 리스트의 길이는 words와 동일
+  
+```
+  [word[0].upper()+word[1:].lower() for word in words if word else ""]
+
+  # 이것은 가능합니다:
+  [word[0].upper()+word[1:].lower() for word in words if word]
+  # 빈 문자열을 제외하고 대문자 변환만 수행
+```
+- 이것은 문법적으로 잘못된 코드
+- 리스트 컴프리헨션에서 if 절은 필터링 용도로만 사용되며 else를 가질 수 없음
+- 이 코드는 SyntaxError를 발생시킴
+
+2. 빈 문자열과 공백 문자열
+   ```
+   empty = ''      # 길이가 0인 빈 문자열
+   space = ' '     # 길이가 1인 공백 문자가 있는 문자열
+
+   print(len(empty))    # 0
+   print(len(space))    # 1
+
+   print(bool(empty))   # False
+   print(bool(space))   # True
+
+   print(empty == space)  # False
+   ```
