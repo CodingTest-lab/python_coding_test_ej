@@ -70,3 +70,13 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+---
+### 참고
+- 리스트가 비었는지 확인
+  ```
+  stack = []
+  # 리스트가 비었다면 밑의 세 조건은 다 True 로 나옴
+  if not stack:
+  if len(stack) == 0:
+  if stack == []:
+  ```
