@@ -1,15 +1,14 @@
 def solution(s):
     # 입력값을 공백으로 나눔
-    # 각 단어 중간에 대문자가 나올 수 있으므로 다 소문자로 바꿈
-    # 각 단어 첫글자가 알파벳이 아니면 이어지는 알파벳은 소문자로
-    # answer = []
-    # words = s.split(" ")
-    # for str in words:
-    #     if str != " ":
-    #         answer.append(str[0].upper() + str[1:].lower())
-    #     else:
-    #         answer.append(" ")
-    # return " ".join(answer)
+    # 각 단어의 첫글자를 대문자로 첫글자 제외하고는 다 소문자로
+    # 공백인 경우 ''(빈문자열) 반환
+    
     words = s.split(" ")
     answer = [word[0].upper()+word[1:].lower() if word else "" for word in words]
+    # 위의 list comprehension을 풀어쓴 버전
+    # for str in words:
+    #     if word:   빈 문자열인지 체크
+    #         answer.append(word[0].upper() + word[1:].lower())
+    #     else:
+    #         ""   빈문자열
     return " ".join(answer)
