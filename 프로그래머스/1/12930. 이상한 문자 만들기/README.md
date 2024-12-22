@@ -52,3 +52,39 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+---
+### 참고
+- split()과 split(' ')
+  ```
+  split() (인자 없음):
+  - 모든 공백 문자(스페이스, 탭, 줄바꿈)를 구분자로 처리
+  - 연속된 공백을 하나의 구분자로 처리
+  - 문자열 앞뒤의 공백을 무시
+  text = "hello   world     python"
+  print(text.split())      # ['hello', 'world', 'python']
+
+  text = "hello\t\tworld\npython"
+  print(text.split())      # ['hello', 'world', 'python']
+  ```
+  ```
+  split(' ') (공백 문자 지정):
+  - 정확히 공백 한 칸만을 구분자로 처리
+  - 연속된 공백을 각각의 구분자로 처리하여 빈 문자열 생성
+  - 문자열 앞뒤의 공백도 처리
+  text = "hello   world     python"
+  print(text.split(' '))   # ['hello', '', '', 'world', '', '', '', '', 'python']
+
+  text = "hello\t\tworld\npython"
+  print(text.split(' '))   # ['hello\t\tworld\npython']
+  ```
+  ```
+  # 여러 공백이 있는 문장 처리
+  text = "The   quick  brown    fox"
+  print(text.split())      # ['The', 'quick', 'brown', 'fox']
+  print(text.split(' '))   # ['The', '', '', 'quick', '', 'brown', '', '', '', 'fox']
+
+  # 앞뒤 공백이 있는 경우
+  text = "  hello  world  "
+  print(text.split())      # ['hello', 'world']
+  print(text.split(' '))   # ['', '', 'hello', '', 'world', '', '']
+  ```
