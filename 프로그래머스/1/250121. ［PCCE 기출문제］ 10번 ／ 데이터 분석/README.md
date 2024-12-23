@@ -134,3 +134,102 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+---
+### 참고
+- 딕셔너리 : 키-값 쌍을 저장하는 해시 테이블 기반의 자료구조
+  ```
+  my_dict = {'name': 'Kim', 'age': 25}
+
+  # 값 접근
+  print(my_dict['name'])  # Kim
+  print(my_dict.get('age'))  # 25
+  print(my_dict.get('job', 'None'))  # 없는 키는 기본값 반환
+
+  # 값 추가/수정
+  my_dict['job'] = 'developer'  # 새로운 키-값 추가
+  my_dict['age'] = 26  # 기존 값 수정
+
+  # 삭제
+  del my_dict['age']  # 특정 키-값 쌍 삭제
+  my_dict.pop('name')  # 키를 지정하여 삭제
+  my_dict.clear()  # 모든 항목 삭제
+
+  # 딕셔너리 컴프리헨션
+  # 기본 형태
+  squares = {x: x**2 for x in range(5)}  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
+  # 조건문 추가
+  even_squares = {x: x**2 for x in range(5) if x % 2 == 0}
+
+  # 중첩 딕셔너리
+  nested_dict = {
+    'user1': {'name': 'Kim', 'age': 25},
+    'user2': {'name': 'Lee', 'age': 30}
+  }
+
+  # 딕셔너리 정렬
+  # 키로 정렬
+  sorted_dict = dict(sorted(my_dict.items()))
+  # 값으로 정렬
+  sorted_dict = dict(sorted(my_dict.items(), key=lambda x: x[1]))
+  ```
+<br>
+- map() 내장 함수
+  ```
+  # 기본 형태
+  map(function, iterable)
+
+  # 단일 iterable 사용
+  numbers = [1, 2, 3, 4, 5]
+  mapped = map(str, numbers)  # 각 숫자를 문자열로 변환
+
+  # 여러 iterable 사용
+  list1 = [1, 2, 3]
+  list2 = [10, 20, 30]
+  mapped = map(lambda x, y: x + y, list1, list2)
+
+  # 제곱 계산
+  squares = list(map(lambda x: x**2, [1, 2, 3, 4]))
+
+  # 조건부 변환
+  result = list(map(lambda x: 'Pass' if x >= 60 else 'Fail', [55, 65, 75]))
+  ```
+<br>
+
+- 람다(lambda) 함수 : 익명 함수를 정의, 단일 표현식만 가능, 람다 내에서는 return 문 사용 불가
+  ```
+    # 일반 함수
+    def add(x, y):
+      return x + y
+
+    # 같은 기능의 람다 함수
+    add = lambda x, y: x + y
+
+    # 리스트를 두 번째 요소 기준으로 정렬
+    pairs = [(1, 'one'), (2, 'two'), (3, 'three')]
+    sorted(pairs, key=lambda pair: pair[1])  # [(1, 'one'), (3, 'three'), (2, 'two')]
+
+    # map 과 함께 사용
+    numbers = [1, 2, 3, 4]
+    squared = list(map(lambda x: x**2, numbers))  # [1, 4, 9, 16]
+
+    --------------------------------------------
+    # 2차원 배열 정렬
+    # 첫 번째 요소 기준 정렬
+    array_2d = [[1, 4], [3, 2], [2, 3]]
+    sorted_array = sorted(array_2d, key=lambda x: x[0])  # [[1, 4], [2, 3], [3, 2]]
+
+    # 두 번째 요소 기준 정렬
+    sorted_array = sorted(array_2d, key=lambda x: x[1])  # [[3, 2], [2, 3], [1, 4]]
+
+    # 여러 기준 정렬 (첫 번째 요소로 정렬 후, 두 번째 요소로 정렬)
+    sorted_array = sorted(array_2d, key=lambda x: (x[0], x[1]))
+
+    # map으로 2차원 배열 변환
+    # 각 요소에 2를 곱하기
+    array_2d = [[1, 2], [3, 4]]
+    result = list(map(lambda x: [i * 2 for i in x], array_2d))  # [[2, 4], [6, 8]]
+
+    # 각 행의 합 계산
+    sums = list(map(lambda x: sum(x), array_2d))  # [3, 7]
+  ```
