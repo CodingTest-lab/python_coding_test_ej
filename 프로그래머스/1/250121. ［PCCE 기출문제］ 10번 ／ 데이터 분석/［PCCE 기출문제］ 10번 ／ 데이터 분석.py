@@ -7,5 +7,4 @@ def solution(data, ext, val_ext, sort_by):
     for i in data:
         if i[criteria[ext]] < val_ext:
             answer.append(i)
-    sorted_answer = sorted(answer, key=lambda x: x[criteria[sort_by]])
-    return sorted_answer
+    return sorted(answer, key=lambda x: x[criteria[sort_by]])
