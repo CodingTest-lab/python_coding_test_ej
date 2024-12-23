@@ -136,7 +136,7 @@
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
 ---
 ### 참고
-- 딕셔너리 : 키-값 쌍을 저장하는 해시 테이블 기반의 자료구조
+- 딕셔너리(dictionary) : 키-값(key-value) 쌍을 저장하는 해시 테이블 기반의 자료구조
   ```
   my_dict = {'name': 'Kim', 'age': 25}
 
@@ -173,28 +173,27 @@
   # 값으로 정렬
   sorted_dict = dict(sorted(my_dict.items(), key=lambda x: x[1]))
   ```
-<br>
+
 - map() 내장 함수
   ```
-  # 기본 형태
-  map(function, iterable)
+    # 기본 형태
+    map(function, iterable)
 
-  # 단일 iterable 사용
-  numbers = [1, 2, 3, 4, 5]
-  mapped = map(str, numbers)  # 각 숫자를 문자열로 변환
+    # 단일 iterable 사용
+    numbers = [1, 2, 3, 4, 5]
+    mapped = map(str, numbers)  # 각 숫자를 문자열로 변환
 
-  # 여러 iterable 사용
-  list1 = [1, 2, 3]
-  list2 = [10, 20, 30]
-  mapped = map(lambda x, y: x + y, list1, list2)
+    # 여러 iterable 사용
+    list1 = [1, 2, 3]
+    list2 = [10, 20, 30]
+    mapped = map(lambda x, y: x + y, list1, list2)
 
-  # 제곱 계산
-  squares = list(map(lambda x: x**2, [1, 2, 3, 4]))
+    # 제곱 계산
+    squares = list(map(lambda x: x**2, [1, 2, 3, 4]))
 
-  # 조건부 변환
-  result = list(map(lambda x: 'Pass' if x >= 60 else 'Fail', [55, 65, 75]))
+    # 조건부 변환
+    result = list(map(lambda x: 'Pass' if x >= 60 else 'Fail', [55, 65, 75]))
   ```
-<br>
 
 - 람다(lambda) 함수 : 익명 함수를 정의, 단일 표현식만 가능, 람다 내에서는 return 문 사용 불가
   ```
