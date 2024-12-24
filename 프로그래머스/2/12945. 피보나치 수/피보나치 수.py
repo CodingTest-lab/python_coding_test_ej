@@ -20,3 +20,14 @@ def solution(n):
     #     # b = temp + a 
     #     # a = temp 
     # return b % 1234567
+
+#######################################
+# 동적 계획법을 활용한 예제, 위의 배열 사용한 버전과 비슷
+# def fibo_dp(num):
+#     cache = [ 0 for index in range(num + 1)]  # 저장공간(0~num을 가지는 배열 -> 배열 길이는 num+1)
+#     cache[0] = 0
+#     cache[1] = 1
+    
+#     for index in range(2, num + 1):   # 리스트에 0,1 이 채워져있고 그다음(2)부터 num까지 반복문 진행, 
+#         cache[index] = cache[index - 1] + cache[index - 2]
+#     return cache[num]
