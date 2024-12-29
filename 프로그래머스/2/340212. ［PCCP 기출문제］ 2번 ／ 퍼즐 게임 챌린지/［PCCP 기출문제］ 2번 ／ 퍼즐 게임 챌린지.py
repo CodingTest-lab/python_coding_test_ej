@@ -1,10 +1,12 @@
+# 이진 탐색이 필요한 경우
+# 답이 특정 범위 안에 있다는 것이 확실할 때, 데이터가 정렬되어 있을때
 def solution(diffs, times, limit):
     # level의 최소
     low = 1
     # level의 최대(숙련도가 난이도를 넘어가면 모든 문제를 현재 시간으로 풀 수 있으므로 최고의 경우, 이보다 크면 의미 없음)
     high = max(diffs)
     
-    # 이진 탐색
+    # 이진 탐색 : 찾는 값의 범위를 슬슬 줄여가는 형식
     # 찾는 값 : level
     # 범위 : 최소/최대 level
     while low <= high:
