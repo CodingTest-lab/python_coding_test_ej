@@ -1,3 +1,4 @@
+# 시작점부터 시작점+변길이 까지의 범위 내에 알파벳이 있는지 확인
 def solution(mats, park):
     # 한변이 가장 큰 정수부터 깔 자리가 있는지 확인
     mats.sort(reverse = True)
