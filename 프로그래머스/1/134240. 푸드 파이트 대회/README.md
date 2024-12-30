@@ -78,3 +78,32 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+---
+### 참고
+- enumerate() : iterable(반복 가능한 객체)의 요소를 순회하면서 인덱스와 값을 함께 반환하는 내장 함수 <br>
+        - 리스트나 튜플의 인덱스와 값을 동시에 필요로 할 때, 행 번호가 필요한 파일 처리, 순차적인 데이터 처리에서 위치 정보가 필요할 때, 인덱스 기반 조건문이 필요할 때 편리
+  ```
+  fruits = ['apple', 'banana', 'cherry']
+  for index, value in enumerate(fruits):
+     print(f"Index: {index}, Value: {value}")
+
+  # 출력:
+  # Index: 0, Value: apple
+  # Index: 1, Value: banana
+  # Index: 2, Value: cherry
+
+  # 시작 인덱스를 1로 지정
+  for index, value in enumerate(fruits, start=1):
+     print(f"Index: {index}, Value: {value}")
+
+  # 인덱스가 짝수인 요소만 선택(리스트 컴프리헨션 사용)
+  even_indexed = [v for i, v in enumerate(fruits) if i % 2 == 0]
+
+  # 문자열과 함께 사용
+  word = "Python"
+  for i, char in enumerate(word):
+     print(f"Position {i}: {char}")
+
+  # 리스트의 값을 키로, 인덱스를 값으로 하는 딕셔너리 생성
+  dict_from_list = {value: index for index, value in enumerate(fruits)}
+  ```
