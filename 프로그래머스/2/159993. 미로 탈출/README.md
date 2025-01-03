@@ -92,3 +92,57 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+---
+### 코드 작동 과정
+1. 입력 데이터 처리
+maps는 문자열 리스트로 들어옵니다.
+맵의 구조는 다음과 같습니다:
+```
+S O O O L
+X X X X O
+O O O O O
+O X X X X
+O O O O E
+```
+
+2. 시작점, 레버, 출구 좌표 찾기
+코드가 maps를 순회하면서 'S', 'L', 'E'의 좌표를 찾아 저장합니다.
+```
+for i, row in enumerate(maps):
+    for j, cell in enumerate(row):
+        if cell == 'S': begin = (i, j)
+        elif cell == 'L': lever = (i, j)
+        elif cell == 'E': exit = (i, j)
+begin = (0, 0) (시작점 'S')
+lever = (0, 4) (레버 'L')
+exit = (4, 4) (출구 'E')
+```
+
+3. BFS 함수로 최단 거리 계산
+3.1 시작점 'S' → 레버 'L'까지 최단 거리 (s_to_l)
+- BFS 초기화: <br>
+        start = (0, 0) (시작점 'S') <br>
+        end = (0, 4) (레버 'L') <br>
+        distance = {(0, 0): 0}: 시작점의 거리는 0. <br>
+        큐에 시작점 추가: q = deque([(0, 0)]) <br>
+- BFS 동작:
+        큐에서 (0, 0)을 꺼냄. 현재 거리는 0.
+
+        이동 가능한 경로 (0, 1) 추가. distance[(0, 1)] = 1.
+        큐 상태: deque([(0, 1)]).
+        큐에서 (0, 1)을 꺼냄. 현재 거리는 1.
+        
+        이동 가능한 경로 (0, 2) 추가. distance[(0, 2)] = 2.
+        큐 상태: deque([(0, 2)]).
+        큐에서 (0, 2)을 꺼냄. 현재 거리는 2.
+        
+        이동 가능한 경로 (0, 3) 추가. distance[(0, 3)] = 3.
+        큐 상태: deque([(0, 3)]).
+        큐에서 (0, 3)을 꺼냄. 현재 거리는 3.
+        
+        이동 가능한 경로 (0, 4) 추가. distance[(0, 4)] = 4.
+        큐 상태: deque([(0, 4)]).
+        큐에서 (0, 4)을 꺼냄. 현재 거리는 4.
+        
+        목표 지점 (0, 4)에 도착했으므로 거리 4를 반환.
+        결과: s_to_l = 4.
