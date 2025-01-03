@@ -9,6 +9,7 @@ def solution(maps):
             elif cell == 'L': lever = (i, j)
             elif cell == 'E': exit = (i, j)
     
+    # 거리가 -1이면 탈출할 수 없음
     # 시작 -> 레버까지 최단거리
     s_to_l = bfs(maps, begin, lever)
     if s_to_l == -1 : return -1
@@ -23,10 +24,10 @@ def bfs(maps, start, end):
     move = [(0, 1), (0, -1), (1, 0), (-1, 0)]
     # need_visit 큐 생성
     q = deque()
-    q.append(start)
+    q.append(start)  # 시작 좌표 추가
     
-    # 방문 처리 및 이동 거리 저장 디렉토리
-    distance = {start:0}
+    # 방문 처리 및 이동 거리 저장 디렉토리(visited 큐에다가 이동거리가 추가된 버전) -> 중복된 좌표 저장을 피하기 위함
+    distance = {start:0}   # 시작 좌표(a,b)의 이동거리 0으로 초기화
     
     # q 에 값이 있는 동안 반복
     while q:
@@ -42,15 +43,17 @@ def bfs(maps, start, end):
             # 추출한 값에서 상하좌우 움직인 좌표
             nx, ny = now[0] + dx, now[1] + dy
             
-            # 움직인 좌표가 maps의 행과 열의 길이를 넘으면 안되고 움직인 좌표의 문자열이 'X' 즉 벽이면 안됨
+            # 움직인 좌표가 maps의 행과 열의 길이를 넘으면 안되고 움직인 좌표의 문자열이 'X' , 즉 벽이면 안됨
             if 0 <= nx < len(maps) and 0 <= ny < len(maps[0]) and maps[nx][ny] != 'X':
-                # 움직인 좌표가 visited에 있지 않다면
+                # 움직인 좌표가 distance(visited 역할)에 있지 않다면
                 if (nx, ny) not in distance:
-                    # 움직인 좌표를 q에 추가
+                    # 움직인 좌표를 q(need_visit 역할)에 추가(다음 반복문을 실행할때 visited에 있는지 체크할 좌표)
                     q.append((nx, ny))
+                    # 움직인 좌표를 distance(visited 역할) 디렉토리에 추가하고 이동 거리를 +1 해줌
                     distance[(nx, ny)] = distance[now] + 1
                     
-    # 도착점에 도착하지 못하면 -1 리턴
+    # 도착점에 도착하지 못하면 -1 리턴(상하좌우에 'X', 즉 벽밖에 없다면)
     return -1
+
             
         
