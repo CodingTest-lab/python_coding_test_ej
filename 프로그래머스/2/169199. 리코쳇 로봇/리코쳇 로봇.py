@@ -1,118 +1,113 @@
+# '미로 탈출' 문제와 비슷한 형태로 풀이
+# 차이점 : '미로 탈출' 문제는 이동한 한칸한칸을 모두 visited 큐에 넣었다면 
+#     이 문제는 장애물 'D'나 보드 경계를 만날 때까지 이동할 수 있는 좌표를 visited 큐에 넣음
 from collections import deque
 
-def solution(board):
-    # 상하좌우 이동
-    direction = [(0, 1), (0, -1), (1, 0), (-1, 0)] 
+def solution(board): 
     
-    # need_visit 큐에 로봇의 처음 위치 'R'을 추가
-    que = deque()
-    for x, row in enumerate(board):
-        for y, each in enumerate(row):
-            if each == 'R':
-                # 처음위치 좌표와 이동거리 추가
-                que.append((x, y, 0))
-    # visited 큐를 set으로 만들기(중복 방문 방지)
-    visited = set()
+    # board에서 'R'과 'G'의 위치 찾기
+    for i, row in enumerate(board):
+        for j, cell in enumerate(row):
+            if cell == 'R': 
+                start = (i, j)  # 시작 지점
+            elif cell == 'G': 
+                goal = (i, j)  # 목표 지점
     
-    while que:
-        x, y, length = que.popleft()
+    # BFS를 통해 최단 거리 계산
+    return bfs(board, start, goal)
+
+
+def bfs(board, start, end):
+    # 상하좌우 움직이는 변화량
+    move = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+    # need_visit 큐 생성
+    q = deque()
+    q.append(start)  # 시작 좌표 추가
+    
+    # 방문 처리 및 이동 거리 저장 디렉토리
+    distance = {start: 0}  # 시작 좌표의 이동거리 0으로 초기화
+    
+    # q에 값이 있는 동안 반복
+    while q:
+        # 첫번째 값 추출
+        now = q.popleft()
         
-        # 이미 방문한 좌표면 다음 반복문 진행(need_visit 큐의 다음 값을 검사)
-        if (x, y) in visited:
-            continue
-        # 목표 위치면 이동거리 리턴
-        if board[x][y] == 'G':
-            return length
-        # 위의 아무 조건도 만나지 않으면 visited 큐에 추출한 좌표 추가
-        visited.add((x, y))
+        # 추출한 값이 도착점과 같다면 거리 반환
+        if now == end:
+            return distance[now]
         
-        # 상하좌우 이동
-        for diff_x, diff_y in direction:
-            # 추출한 좌표(need_visit 큐에서 추출)
-            now_x, now_y = x, y
+        # 상하좌우 돌아다님
+        for dx, dy in move:
+            x, y = now  # 현재 좌표
+            # 장애물 'D'나 보드 경계를 만날 때까지 이동
             while True:
-                # 이동한 좌표
-                next_x, next_y = now_x + diff_x, now_y + diff_y
+                nx, ny = x + dx, y + dy
                 
-                # 이동한 좌표가 행과 열의 길이를 넘지 않고 장애물이 아니면
-                if 0 <= next_x < len(board) and 0 <= next_y < len(board[0]) and board[next_x][next_y] != 'D':
-                    # 이동한 좌표를 추출한 좌표로 대입
-                    now_x, now_y = next_x, next_y
+                # 이동이 가능한 경우 계속 이동
+                if 0 <= nx < len(board) and 0 <= ny < len(board[0]) and board[nx][ny] != 'D':
+                    x, y = nx, ny  # 좌표 업데이트
                     continue
-                # need_visit 큐에 이동한 좌표 추가 및 이동거리 +1
-                que.append((now_x, now_y, length + 1))
+                # 이동이 불가능한 경우 (장애물이나 경계에 도달)
                 break
+                
+            # 최종 이동한 좌표가 방문하지 않은 경우 큐에 추가
+            if (x, y) not in distance:
+                q.append((x, y))
+                distance[(x, y)] = distance[now] + 1  # 이동 거리 갱신
+                    
+    # 목표지점에 도착하지 못하면 -1 리턴
     return -1
-
-
-
 
 
 # from collections import deque
 
 # def solution(board):
-#     # 상하좌우
-#     move = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-#     # 행 길이, 열 길이
-#     board_r, board_c = len(board), len(board[0])
-#     # visited 큐(열길이 * 행길이의 2차원 리스트, Flase로 초기화)
-#     visited = [[False] * board_c for _ in range(board_r)]
+#     # 상하좌우 이동
+#     direction = [(0, 1), (0, -1), (1, 0), (-1, 0)] 
     
-#     # 로봇의 처음 위치인 'R'의 좌표 추출
-#     for i, row in enumerate(board):
-#         for j, col in enumerate(row):
-#             if col == 'R':
-#                 start = [i, j]
+#     # need_visit 큐에 로봇의 처음 위치 'R'을 추가
+#     que = deque()
+#     for x, row in enumerate(board):
+#         for y, each in enumerate(row):
+#             if each == 'R':
+#                 # 처음위치 좌표와 이동거리 추가
+#                 que.append((x, y, 0))
+#     # visited 큐를 set으로 만들기(중복 방문 방지)
+#     visited = set()
     
-#     # 게임판 위의 장애물이나 맨 끝에 부딪힐 때까지 미끄러져 이동
-#     def move_untill_wall(r, c, dx, dy):
-#         while True:
-#             r += dx
-#             c += dy
-#             # now_r, now_c = r + dx, c + dy
-#             # 게임판 위의 말이 행과 열의 길이를 벗어나면(지도를 벗어나면) 
-#             if r < 0 or r >= board_r or c < 0 or c >= board_c: 
-#                 # 반복문 종료(이동 중단)
-#                 break
-#             # 이동한 좌표가 장애물을 만난다면
-#             elif board[r][c] == 'D':
-#                 # 반복문 종료(이동 중단)
-#                 break
+#     while que:
+#         x, y, length = que.popleft()
         
-#         # break로 while문을 빠져나온 위치는 이미 지도를 벗어나거나 장애물 위치
-#         # 멈춰야할 위치는 그 직전 위치이므로 반대로 한칸 돌아감
-#         r -= dx
-#         c -= dy
-#         return [r, c]
+#         # 이미 방문한 좌표면 다음 반복문 진행(need_visit 큐의 다음 값을 검사)
+#         if (x, y) in visited:
+#             continue
+#         # 목표 위치면 이동거리 리턴
+#         if board[x][y] == 'G':
+#             return length
+#         # 위의 아무 조건도 만나지 않으면 visited 큐에 추출한 좌표 추가(현재 위치)
+#         visited.add((x, y))
         
-    
-#     # need_visit 큐
-#     q = deque()
-#     # 시작 좌표와 이동 거리를 추가
-#     q.append([start[0], start[1], 0])
-#     # 시작 위치 방문 처리
-#     visited[start[0]][start[1]] = True
-    
-#     while q:
-#         r, c, dis = q.popleft()
-#         # 상하좌우 돌아다님
-#         for dx, dy in move:
-#             # 이동한 위치 리턴
-#             dr, dc = move_untill_wall(r, c, dx, dy)
+#         # 상하좌우 이동
+#         for diff_x, diff_y in direction:
+#             # 현재 좌표(need_visit 큐에서 추출)
+#             now_x, now_y = x, y
             
-#             # 이미 지나간 위치면 다음 반복문 진행(need_visit 큐의 다음 값을 검사)
-#             if visited[dr][dc]:
-#                 continue
+#             # 로봇이 장애물('D')에 부딪히거나 보드의 경계를 넘어설 때까지 계속 이동
+#             while True:
+#                 # 이동한 좌표
+#                 next_x, next_y = now_x + diff_x, now_y + diff_y
                 
-#             # 목표 위치면 현재 이동 거리 +1
-#             elif board[dr][dc] == 'G':
-#                 return dis + 1
-            
-#             # 단순 이동(추출한 visited에 없을때 visited큐에 추출한 값 추가 및 need_visit 큐에 이동한 좌표와 이동거리 추가)
-#             else:
-#                 q.append([dr, dc, dis + 1])
-#                 visited[dr][dc] = True 
-            
-#     # 목표위치에 도달할 수 없다면
+#                 # 이동한 좌표가 행과 열의 길이를 넘지 않고(보드 내에 있고) 장애물이 아니면
+#                 if 0 <= next_x < len(board) and 0 <= next_y < len(board[0]) and board[next_x][next_y] != 'D':
+#                     # 이동한 좌표를 현재 좌표로 대입(좌표를 계속 이동)
+#                     now_x, now_y = next_x, next_y
+#                     continue
+#                 # 이동 불가한 경우(보드를 벗어나거나 장애물을 만날 경우) need_visit 큐에 이동한 좌표 추가 및 이동거리 +1
+#                 que.append((now_x, now_y, length + 1))
+#                 break
+                
+#     # 모든 위치를 탐색해도 목표에 도달하지 못한 경우
 #     return -1
+
+
 
