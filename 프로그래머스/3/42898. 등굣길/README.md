@@ -63,5 +63,13 @@
 
 <p><img src="https://grepp-programmers.s3.amazonaws.com/files/ybm/32c67958d5/729216f3-f305-4ad1-b3b0-04c2ba0b379a.png" title="" alt="image1.png"></p>
 
-
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+### 참고 
+![img](https://github.com/user-attachments/assets/2ecbe116-a708-440d-a225-b3231aa707fb)
+초딩때 배웠던 최단 경로 구하는 방식으로 푸는 문제
+
+코드 중 2차원 배열을 (m+1)*(n+1) 크기로 만드는 이유
+-> 시작점이 (1,1) 이고 도착점이 (m,n)이다(실제 도착점을 n,m으로 맞추기 위함)
+-> 그리고 m이 열이고 n이 행이므로 실제 도착점은 (n,m)이고 물웅덩이 좌표도 순서 바꿔야함
